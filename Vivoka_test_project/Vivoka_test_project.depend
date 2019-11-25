@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1574649775 source:c:\users\spyru\documents\vivoka_test_project\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cstdlib>
+	<ctime>
+
