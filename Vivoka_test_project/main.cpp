@@ -38,13 +38,14 @@ int main()
     int best_scores[5] = {0}; // 0 étant un score impossible
 
     /*START*/
-    /*Name of the player*/
-    cout << "What's your name ?" << endl;
+    /*Name of the player and welcoming*/
+    cout << "WELCOME TO THE 'MORE OR LESS' GAME !\n\n" << endl;
+    cout << "***First step, indicate your name :***" << endl;
     cin >> name;
-    cout << "\nWelcome " << name << "." << endl;
+    cout << "\nGood luck " << name << "...\n\n" << endl;
 
     /*Game*/
-    cout << "Guess the digit between 0 and 100 (both included)" << endl;
+    cout << "***Second step, guess the digit between 0 and 100 (both included)***" << endl;
     do // boucle principale
     {
         do // verification de la validité de la valeur de la tentative du joueur
@@ -64,17 +65,17 @@ int main()
         non_valid = 1; // remise à zero de la validité pour le prochain (possible) essai
         if(trial<digit) // premier cas : la valeur de la tentative est inférieure à celle recherchée
         {
-            cout << "\nIt's more" << endl;
+            cout << "It's more" << endl;
         }
         else
         {
             if(trial>digit) // deuxieme cas : la valeur de la tentative est supérieure à celle recherchée
             {
-                cout << "\nIt's less" << endl;
+                cout << "It's less" << endl;
             }
             else  // dernier cas : la valeur de la tentative est égale à celle recherchée
             {
-                cout << "\nBingo !" << endl;
+                cout << "\nBINGO ! Congratulations." << endl;
                 nb_trial=nb_trial+max_trial; // pour terminer la partie tout en conservant l'information sur le nombre d'essais effectués
                 status = "Won"; // la partie est gagnée
 
@@ -95,14 +96,14 @@ int main()
     }
     else
     {
-            cout << "The answer was : " << digit << endl; // sinon affichage de la réponse
+            cout << "Too bad, the answer was : " << digit << endl; // sinon affichage de la réponse
     }
 
     /*Score writing*/
     ofstream record_stream("record.txt", ios::app); // écriture du score dans un fichier
     if(record_stream) // test sur la bonne ouverture du fichier
     {
-        cout << "Score recorded" << endl;
+        cout << "(Score recorded)" << endl;
         record_stream << name << "\n" << date << nb_trial << "\n" << status << "\n\n" << endl;
     }
     else
@@ -155,6 +156,8 @@ int main()
             }
 
         }
+        cout << "\nYour 5 best scores :" << endl;
+        cout << "You've found with"<< endl;
         for( j=0; j<5; j=j+1) // affichage du tableau des scores
         {
             if(best_scores[j]!=0 && best_scores[j]!=10) // on n'affiche que les parties victorieuses
@@ -162,6 +165,7 @@ int main()
                 cout << best_scores[j] << endl;
             }
         }
+        cout << "trial(s)." << endl;
     }
     else
     {
